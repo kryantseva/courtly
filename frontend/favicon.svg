@@ -1,0 +1,20 @@
+<svg width="64" height="64" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="courtly-favicon-grad" x1="6" y1="5" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14b8a6" />
+      <stop offset="0.45" stop-color="#0f766e" />
+      <stop offset="1" stop-color="#0d5f59" />
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="11" fill="url(#courtly-favicon-grad)" />
+  <rect x="8.5" y="8.5" width="23" height="23" rx="3.5" stroke="#fff" stroke-width="1.75" opacity="0.92" />
+  <path d="M12 20h16M20 11.5v17" stroke="#fff" stroke-width="1.45" stroke-linecap="round" opacity="0.9" />
+  <circle cx="30.5" cy="10.5" r="5.25" fill="#fff" />
+  <path
+    d="M27.9 10.4l1.35 1.45 3.45-4.1"
+    stroke="#0f766e"
+    stroke-width="1.55"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

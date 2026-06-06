@@ -1,0 +1,90 @@
+export const BRANCH_JOURNAL_FALLBACK_COURTS = [
+  { id: "fallback-1", label: "Корт 1" },
+  { id: "fallback-2", label: "Корт 2" },
+  { id: "fallback-3", label: "Зал функционала" },
+];
+export const BRANCH_JOURNAL_DAY_START_HOUR = 7;
+export const BRANCH_JOURNAL_DAY_END_HOUR = 22;
+export const BRANCH_JOURNAL_SLOT_MINUTES = 30;
+export const BRANCH_JOURNAL_BOOKINGS_MOCK = [
+  {
+    id: "jb1",
+    courtIndex: 0,
+    startMin: 10 * 60,
+    endMin: 11 * 60,
+    client: "Екатерина",
+    phone: "+7 927 …",
+    service: "Аренда 1 ч",
+    tone: "mint",
+    paid: true,
+    confirmed: true,
+    adminBookingPath: "/admin/bookings/bk1",
+  },
+  {
+    id: "jb2",
+    courtIndex: 1,
+    startMin: 9 * 60 + 30,
+    endMin: 11 * 60,
+    client: "Группа функционал",
+    phone: "—",
+    service: "Групповое",
+    tone: "rose",
+    paid: false,
+    confirmed: true,
+    adminBookingPath: "/admin/bookings/bk2",
+  },
+  {
+    id: "jb3",
+    courtIndex: 2,
+    startMin: 11 * 60,
+    endMin: 12 * 60 + 30,
+    client: "Дмитрий",
+    phone: "+7 900 …",
+    service: "Индивидуально",
+    tone: "amber",
+    paid: true,
+    confirmed: false,
+    adminBookingPath: "/admin/bookings/bk3",
+  },
+  {
+    id: "jb4",
+    courtIndex: 3,
+    startMin: 14 * 60,
+    endMin: 16 * 60,
+    client: "Корпоратив",
+    phone: "офис",
+    service: "Блок 2 ч",
+    tone: "sky",
+    paid: true,
+    confirmed: true,
+  },
+  {
+    id: "jb5",
+    courtIndex: 4,
+    startMin: 12 * 60,
+    endMin: 13 * 60,
+    client: "Алина",
+    phone: "+7 900 …",
+    service: "Теннис",
+    tone: "violet",
+    paid: true,
+    confirmed: true,
+    adminBookingPath: "/admin/bookings/bk4",
+  },
+  {
+    id: "jb6",
+    courtIndex: 5,
+    startMin: 18 * 60,
+    endMin: 19 * 60,
+    client: "Турнир (блок времени)",
+    phone: "",
+    service: "Событие",
+    tone: "slate",
+    paid: false,
+    confirmed: true,
+  },
+];
+export function filterJournalBookingsForCourts(courtCount) {
+  return BRANCH_JOURNAL_BOOKINGS_MOCK.filter((b) => b.courtIndex < courtCount);
+}
+export const BRANCH_JOURNAL_CALENDAR_HEAD = { monthLabel: "Апрель 2026", selectedDay: 21, year: 2026, month: 3 };

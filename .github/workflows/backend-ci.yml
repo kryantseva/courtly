@@ -1,0 +1,71 @@
+name: backend-ci
+
+on:
+  push:
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+  pull_request:
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+
+# Блокировка merge при падении: branch protection должен требовать этот workflow (Q-003).
+jobs:
+  test-backend:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: courtly
+          POSTGRES_USER: courtly
+          POSTGRES_PASSWORD: courtly
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U courtly -d courtly"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      POSTGRES_DB: courtly
+      POSTGRES_USER: courtly
+      POSTGRES_PASSWORD: courtly
+      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_PORT: 5432
+      DJANGO_SECRET_KEY: ci-secret
+      DJANGO_DEBUG: "0"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+      PAYMENT_WEBHOOK_SECRET: ci-webhook-test-secret
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Check migrations are up to date
+        working-directory: backend
+        run: python manage.py makemigrations --check --dry-run
+
+      - name: Run migrations
+        working-directory: backend
+        run: python manage.py migrate --noinput
+
+      - name: Run backend test suite
+        working-directory: backend
+        run: python manage.py test api.tests --verbosity 2
