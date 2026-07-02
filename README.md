@@ -33,12 +33,18 @@ https://drive.google.com/file/d/1z9TK90pLipNgDop8q1LGML5igUIX1XOC/view?usp=shari
 
 ---
 
+## Презентация выпускной квалификационной работы 
+
+https://docs.google.com/presentation/d/1p1GBBPT7Eg6n3cU15tSDiCN_13k1CQEg/edit?usp=sharing&ouid=111106654388962306992&rtpof=true&sd=true
+
+---
+
 ## Быстрый старт (локально, через Docker Compose)
 
 ### 1. Клонируйте репозиторий
 
 ```bash
-git clone https://github.com/yourusername/courtly.git
+git clone https://github.com/kryantseva/courtly
 cd courtly
 ```
 
@@ -150,7 +156,7 @@ cd frontend && npm ci && npm run build
 ## Контакты
 
 - Автор: https://t.me/kryantseva
-- Email: marshmallowiangel@mail.ru
+- Email: aikisvyantseva@mail.ru
 
 ---
 
